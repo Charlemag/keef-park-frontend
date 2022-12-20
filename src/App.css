@@ -39,3 +39,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.heart {
+  position: absolute;
+  /* top: 30px; */
+  /* left: 35px; */
+  height: 25px;
+}

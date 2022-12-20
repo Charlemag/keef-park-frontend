@@ -27,7 +27,7 @@ function LoginPage(){
         console.log(axiosResponse.data)
         storeToken(axiosResponse.data.authToken);
         authenticateUser();
-        navigate('/');
+        navigate('/StrainsPage');
       })
       .catch(err => console.log(err));
   }

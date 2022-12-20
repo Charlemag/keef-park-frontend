@@ -4,8 +4,8 @@ import AddProject from "../components/AddProject";
 function HomePage(){
   return (
     <main>
-      <h1>This is the homepage</h1>
-      <AddProject />
+      <h1>This is Keef Park</h1>
+      {/* <AddProject /> */}
     </main>
   );
 }
