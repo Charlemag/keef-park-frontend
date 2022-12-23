@@ -8,9 +8,9 @@ function Navbar() {
 
   return (
     <nav>
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <span>Find your vibe {user.name}!</span>
-      )}
+      )} */}
 
       <Link to="/">
         <button>Home</button>
@@ -23,9 +23,17 @@ function Navbar() {
           <Link to="/strains">
             <button>Strains</button>
           </Link>
+          <Link to="/profile">
+            <button>Profile</button>
+          </Link>
+          <Link to="/myprofile">
+            <button>My Profile</button>
+          </Link>
           <button onClick={logOutUser}>Logout</button>
         </>
       )}
+
+    
 
       {!isLoggedIn && (
         <>
@@ -37,6 +45,8 @@ function Navbar() {
           </Link>
         </>
       )}
+
+
  
       
     </nav>
