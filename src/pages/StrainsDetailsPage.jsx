@@ -11,7 +11,7 @@ const [strains, setStrains] = useState(null);
 
 
 useEffect(() => {
-    axios.get(`http://localhost:3001/strains/${strainsId}`, {
+    axios.get(`${import.meta.env.VITE_API_URL}/strains/${strainsId}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem('authToken')}`
           }

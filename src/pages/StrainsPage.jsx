@@ -10,7 +10,7 @@ const StrainsPage = () => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:3001/strains", {
+      .get(`${import.meta.env.VITE_API_URL}/strains`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
@@ -36,26 +36,26 @@ const StrainsPage = () => {
             <img
               className="heart"
               src={heart}
-              onClick={() => {
-                axios
-                  .post(
-                    `http://localhost:3001/strains/${strains.id}/add-favorite`,
-                    null,
-                    {
-                      headers: {
-                        authorization: `Bearer ${localStorage.getItem(
-                          "authToken"
-                        )}`,
-                      },
-                    }
-                  )
+              // onClick={() => {
+              //   axios
+              //     .post(
+              //       `http://localhost:3001/strains/${strains.id}/add-favorite`,
+              //       null,
+              //       {
+              //         headers: {
+              //           authorization: `Bearer ${localStorage.getItem(
+              //             "authToken"
+              //           )}`,
+              //         },
+              //       }
+              //     )
 
-                  .then((response) => {
-                  navigate("/profile")
-                  console.log(response.data);
-                  })
-                  .catch((err) => console.log(err));
-              }}
+              //     .then((response) => {
+              //     navigate("/profile")
+              //     console.log(response.data);
+              //     })
+              //     .catch((err) => console.log(err));
+              // }}
             />
           </>
         );

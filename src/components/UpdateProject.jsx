@@ -16,7 +16,7 @@ const UpdateProject = (props) => {
   const submitFormHandler = e => {
     e.preventDefault();
     console.log('form submit works');
-    axios.put(`http://localhost:3001/api/projects/${props.projectId}`, {
+    axios.put(`${import.meta.env.VITE_API_URL}/api/projects/${props.projectId}`, {
       title: state.title,
       description: state.description
     })

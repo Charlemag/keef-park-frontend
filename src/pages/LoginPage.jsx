@@ -22,7 +22,7 @@ function LoginPage(){
   const onFormSubmit = e => {
     e.preventDefault();
     console.log(state)
-    axios.post('http://localhost:3001/auth/login', state)
+    axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, state)
       .then(axiosResponse => {
         console.log(axiosResponse.data)
         storeToken(axiosResponse.data.authToken);

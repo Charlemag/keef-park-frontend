@@ -15,7 +15,7 @@ function AddTask(props){
 
   const formSubmitHandler = e => {
     e.preventDefault();
-    axios.post('http://localhost:3001/api/tasks', {
+    axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, {
       title: state.title,
       description: state.description,
       projectId: props.projectId

@@ -14,7 +14,7 @@ const AddProject = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    axios.post('http://localhost:3001/api/projects', {
+    axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, {
       title,
       description
     })

@@ -20,7 +20,7 @@ function SignupPage(){
   const onFormSubmit = e => {
     e.preventDefault();
     console.log(state)
-    axios.post('http://localhost:3001/auth/signup', state)
+    axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, state)
       .then(axiosResponse => {
         console.log(axiosResponse.data)
         navigate('/login');

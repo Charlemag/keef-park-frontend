@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,7 +12,12 @@ function UpdateProfile () {
         name: ''
       });
       
-      const { logOutUser } = useContext(AuthContext);
+      const navigate = useNavigate();
+
+
+      // const { logOutUser } = useContext(AuthContext);
+
+      const { logOutUser, authenticateUser, removeToken } = useContext(AuthContext);
 
       const [id, setId] = useState(null)
 
@@ -22,7 +28,7 @@ function UpdateProfile () {
     console.log(state)
     
       useEffect(() => {
-          axios.get('http://localhost:3001/auth/updateProfile', {
+          axios.get(`${import.meta.env.VITE_API_URL}/auth/updateProfile`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem('authToken')}`,
           },
@@ -38,7 +44,7 @@ function UpdateProfile () {
     const submitFormHandler = e => {
         e.preventDefault();
         // console.log('form submit works');
-        axios.put(`http://localhost:3001/auth/updateProfile`, {
+        axios.put(`${import.meta.env.VITE_API_URL}/auth/updateProfile`, {
           name: state.name,
           email: state.email
         },{ 
@@ -54,7 +60,7 @@ function UpdateProfile () {
       }
 
       const deleteUser = (userId) => {
-        axios.delete(`http://localhost:3001/auth/updateProfile`,
+        axios.delete(`${import.meta.env.VITE_API_URL}/auth/updateProfile`,
         {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('authToken')}`
@@ -63,7 +69,7 @@ function UpdateProfile () {
         )
         .then(axiosResponse => {
             console.log(axiosResponse);
-            logOutUser()
+           
         })
         .catch(err => console.log(err));
     }
@@ -76,9 +82,18 @@ function UpdateProfile () {
         <label>Name</label>
         <input value={state.name} name="name" onChange={updateState} />
         <button>Update</button>
-        <button onClick={()=> {deleteUser(id) }
-        }
-       >Delete</button>
+        <button
+        onClick={() => {
+          deleteUser();
+          localStorage.clear();
+
+          logOutUser();
+          authenticateUser();
+          navigate("/");
+        }}
+      >
+        Delete
+      </button>
 </form>
 
 

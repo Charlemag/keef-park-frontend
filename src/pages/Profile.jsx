@@ -8,7 +8,7 @@ const{ user,isLoggedIn,logOut } = useContext(AuthContext)
 const [ favorites, setFavorites] = useState([])
 
 useEffect(() => {
-    axios.get('http://localhost:3001/strains/findFavorites', { 
+    axios.get(`${import.meta.env.VITE_API_URL}/strains/findFavorites`, { 
     headers: {
         authorization: `Bearer ${localStorage.getItem('authToken')}`
       }
